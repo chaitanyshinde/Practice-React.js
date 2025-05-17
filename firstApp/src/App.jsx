@@ -9,10 +9,19 @@ function App() {
   const decCount = () => {
     setCount(count - 1);
   };
+
+  const [username, setUsername] = useState("");
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    alert("Form submit!");
+    setUsername("");
+  };
+
   return (
-    <div>
+    <>
       <h1>First Hello!</h1>
-      <h2>Count: {count}</h2>
+      {/* <h2>Count: {count}</h2>
       <button onClick={incCount}>Increase Count</button>
       <button onClick={decCount}>Decrease Count</button>
       <button
@@ -21,8 +30,26 @@ function App() {
         }}
       >
         Inc by 10
-      </button>
-    </div>
+      </button> */}
+
+      {/* Form Handling */}
+
+      <form
+        onSubmit={(e) => {
+          handleFormSubmit(e);
+        }}
+      >
+        <input
+          value={username}
+          onChange={(e) => {
+            setUsername(e.target.value);
+          }}
+          type="text"
+          placeholder="enter your name"
+        />
+        <button type="submit">Submit</button>
+      </form>
+    </>
   );
 }
 
