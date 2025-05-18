@@ -20,6 +20,34 @@ function App() {
     setUsername("");
   };
 
+  const users = [
+    {
+      name: "Alice Smith",
+      age: 28,
+      income: 60000,
+    },
+    {
+      name: "Bob Johnson",
+      age: 35,
+      income: 72000,
+    },
+    {
+      name: "Charlie Brown",
+      age: 22,
+      income: 48000,
+    },
+    {
+      name: "Diana White",
+      age: 40,
+      income: 85000,
+    },
+    {
+      name: "Ethan Black",
+      age: 31,
+      income: 67000,
+    },
+  ];
+
   return (
     <div>
       {/* <h1>First Hello!</h1> */}
@@ -51,8 +79,12 @@ function App() {
       </form> */}
 
       <Navbar />
-      <Card item="Cricket Bat" market="100000" />
-      <Card item="HeadPhone" market="1000000" />
+
+      <div>
+        {users.map(function (e) {
+          return <Card name={e.name} age={e.age} income={e.income} />;
+        })}
+      </div>
     </div>
   );
 }
