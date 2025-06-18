@@ -2,16 +2,22 @@ import React from "react";
 import { addToCart } from "../features/CartSlice";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 
 function ProductCard({ id, title, price, images }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
 
   const handleAddToCart = () => {
     dispatch(addToCart({ id, title, price, image: images[0] }));
+    navigate("/cart");
   };
 
   return (
     <div className="flex flex-col justify-between h-full border p-4 rounded shadow hover:shadow-md transition-all">
+      {/* Top Section: Image + Title + Price */}
       <div>
         <Link to={`/product/${id}`}>
           <img
@@ -24,6 +30,7 @@ function ProductCard({ id, title, price, images }) {
         </Link>
       </div>
 
+      {/* Bottom Section: Buttons */}
       <div className="mt-4 flex flex-col gap-2">
         <Link to={`/product/${id}`}>
           <button className="w-full bg-green-600 text-white py-1.5 rounded hover:bg-green-700">
