@@ -1,12 +1,15 @@
 import React from "react";
 import { addToCart } from "../features/CartSlice";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function DetailsCard({ id, title, description, price, images }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleAddToCart = () => {
     dispatch(addToCart({ id, title, price, image: images?.[0] || "" }));
+    navigate("/cart")
   };
 
   return (
